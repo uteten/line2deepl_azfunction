@@ -65,6 +65,6 @@ jobs:
           app-name: 'line2deepl'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0CF76E098B8F427980E1C424DDC8AFAB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1D37A45F45834C4685C3370B9CE85E16 }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
