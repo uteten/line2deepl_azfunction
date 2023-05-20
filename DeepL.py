@@ -11,6 +11,7 @@ import sys
 
 class DeepL():
     def __init__(self):
+        self.API_URL="https://api-free.deepl.com/v2/translate"
         if 'CUSTOMCONNSTR_DEEPL_AUTH_KEY' in os.environ:
             self.auth_key = os.environ['CUSTOMCONNSTR_DEEPL_AUTH_KEY']
         else:
@@ -20,7 +21,6 @@ class DeepL():
             sys.exit()
 
     def translateText(self, msg,target_lang):
-        URL = "https://api-free.deepl.com/v2/translate"
         if not target_lang:
             target_lang="JA"
         data = urllib.parse.urlencode({
@@ -28,7 +28,7 @@ class DeepL():
             'target_lang': target_lang,
             'text': msg
         }).encode('utf-8')
-        request = urllib.request.Request(URL, data)
+        request = urllib.request.Request(self.API_URL, data)
         response = urllib.request.urlopen(request)
         if response.getcode() == 200:
             ret = json.loads(response.read().decode('utf-8'))

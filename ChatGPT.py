@@ -9,6 +9,8 @@ class ChatGPT:
     self.chat_history=[]
     self.chat_history_max=chat_history_max
     self.mission= {"role": "system", "content": mission}
+    openai.api_key = os.environ["CUSTOMCONNSTR_OPENAI_API_KEY"]
+
 
 
   def generate_answer(self,prompt):
@@ -37,7 +39,6 @@ class ChatGPT:
             print("エラーメッセージ:", exc_value)
 
   def ChatGPT3(self,messages):
-      openai.api_key = os.environ["CUSTOMCONNSTR_OPENAI_API_KEY"]
       response = openai.ChatCompletion.create(
           model="gpt-3.5-turbo",
           max_tokens=3000,
@@ -50,6 +51,7 @@ class ChatGPT:
       #print(response)
       return answer,response
 
+  # 使ってない
   def Davinci(self,messages):
       prompt=""
       messages.insert(1,{"role": "assistant", "content": "[Forget the conversation we've had so far.] No problem! What would you like to talk about?"})

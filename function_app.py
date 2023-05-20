@@ -53,7 +53,7 @@ def test_function(req: func.HttpRequest) -> func.HttpResponse:
         signature = req.headers['X-Line-Signature']
     body = req.get_body().decode()
     logging.info(["body::",body])
-    logging.info(["signature::",signature])
+    #logging.info(["signature::",signature])
 
     handler.handle(body, signature)
     return func.HttpResponse("ok", status_code=200)
