@@ -81,8 +81,9 @@ def handle_message(event):
         logging.info("英語")
         jp_text = DeepL.DeepL().translateText(en_text,'JA')
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=jp_text))
-    words=getWords(en_text)
-    line_bot_api.push_message(event.source.user_id,TextSendMessage(text=words))
+    # chatgptt単語翻訳やめた
+    #words=getWords(en_text)
+    #line_bot_api.push_message(event.source.user_id,TextSendMessage(text=words))
 
 @handler.add(MessageEvent, message=ImageMessage)
 def handle_image(event):
@@ -99,5 +100,6 @@ def handle_image(event):
         jp_text = DeepL.DeepL().translateText(en_text.replace("\n", " "),'JA')
         reply+= "E: " + en_text + "\nJ: " + jp_text + "\n"
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=reply))
-    words=getWords(en_text_all)
-    line_bot_api.push_message(event.source.user_id,TextSendMessage(text=words))
+    # chatgptt単語翻訳やめた
+    #words=getWords(en_text_all)
+    #line_bot_api.push_message(event.source.user_id,TextSendMessage(text=words))
